@@ -31,7 +31,13 @@ angular.module('starter', ['ionic'])
     templateUrl: 'templates/lobby.html',
   })
   .state('question', {
-    url: '/question',
+    url: '/question:questionID',
     templateUrl: 'templates/question.html',
-  });
+    controller: 'QuestionsCtrl',
+    resolve: {
+      testInfo: function($stateParams, TKTestQuestionService) {
+        return TKTestQuestionService.getQuestion($stateParams.questionID);
+      }
+    }
+})
 });
