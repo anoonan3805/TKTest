@@ -1,7 +1,7 @@
 angular.module('starter.controllers')
 .controller('QuestionsCtrl',['$scope', '$stateParams', 'testInfo', 'TKAnswersService', '$state', '$ionicHistory',
 function($scope, $stateParams, testInfo, TKAnswersService, $state, $ionicHistory) {
-}]);
+
 
 $scope.qNumber = $stateParams.questionID;
 
@@ -42,3 +42,4 @@ function performRequest()
     });
     $state.go('lobby');
 }
+}]);
