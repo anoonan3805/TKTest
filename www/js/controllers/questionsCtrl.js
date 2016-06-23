@@ -1,6 +1,6 @@
 angular.module('starter.controllers')
-.controller('QuestionsCtrl',['$scope', '$stateParams', 'testInfo', 'TKAnswersService', '$state', '$ionicHistory',
-function($scope, $stateParams, testInfo, TKAnswersService, $state, $ionicHistory) {
+.controller('QuestionsCtrl',['$scope', '$stateParams', 'testInfo', 'TKAnswersService', '$state', '$ionicHistory', 'TKResultsButtonService',
+function($scope, $stateParams, testInfo, TKAnswersService, $state, $ionicHistory, TKResultsButtonService) {
 
 
 $scope.qNumber = $stateParams.questionID;
@@ -40,6 +40,12 @@ function performRequest()
     $ionicHistory.nextViewOptions({
          historyRoot: true
     });
+    $state.go('results');
+    TKResultsButtonService.setShouldShowMenuButton(true);
+    $ionicHistory.nextViewOptions({
+         historyRoot: true
+    });
     $state.go('lobby');
 }
+
 }]);

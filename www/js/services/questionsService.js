@@ -1,13 +1,23 @@
 angular.module('TKTestQuestions', [])
 .service('TKTestQuestionService', ['$http', function ($http){
     var service = this;
+    
+   var questions = [];
 
 service.all = function () {
-        return $http.get('files/questions.json');
+        $http.get('files/questions.json')
+        .then(function(response){
+            if(response.status == 200)
+            {
+                questions = response.data;
+            }
+        });
  };
+ 
  
 service.getQuestion = function(questionID)
 {
+        console.log("Inside questions");
         var results = [];
         questions.forEach(function(question){
             //Search for questions with the specified question ID

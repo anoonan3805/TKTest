@@ -9,6 +9,15 @@ angular.module('TKTestAnswers',[])
         "accommodating": 0
     };
     var categoriesStack = [];
+    
+     service.getTests = function() {
+        return JSON.parse($window.localStorage.tests);
+    };
+   
+    service.setAnswers = function(answers)
+    {
+        answerCategories = answers;
+    };
    
     service.getAnswers = function()
     {
@@ -40,4 +49,6 @@ angular.module('TKTestAnswers',[])
         tempTests.push(test);
         $window.localStorage.tests = JSON.stringify(tempTests);
     };
+    
+   
 }]);
