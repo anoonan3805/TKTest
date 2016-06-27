@@ -1,3 +1,4 @@
+/* global angular */
 angular.module('TKTestQuestions', [])
 .service('TKTestQuestionService', ['$http', function ($http){
     var service = this;

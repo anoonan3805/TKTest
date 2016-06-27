@@ -1,3 +1,4 @@
+/* global angular */
 angular.module('TKTestAnswers',[])
 .service('TKAnswersService',['$window', function ($window) {
     var service = this;
@@ -10,45 +11,38 @@ angular.module('TKTestAnswers',[])
     };
     var categoriesStack = [];
     
-     service.getTests = function() {
-        return JSON.parse($window.localStorage.tests);
-    };
-   
-    service.setAnswers = function(answers)
-    {
-        answerCategories = answers;
-    };
-   
-    service.getAnswers = function()
-    {
-        return answerCategories;
-    };
-   
-    service.saveAnswer = function(answerCategory)
-    {
-        answerCategories[answerCategory.toLowerCase()]++;
-        categoriesStack.push(answerCategory);
-    };
-   
-    service.resetAnswers = function()
-    {
-        for (var property in answerCategories) {
-            if (answerCategories.hasOwnProperty(property)) {
-                answerCategories[property] = 0;
+     service.getAnswers = function() {
+            return answerCategories;
+        };
+
+        service.saveAnswer = function(answerCategory) {
+            answerCategories[answerCategory.toLowerCase()]++;
+            categoriesStack.push(answerCategory);
+        };
+
+        service.resetAnswers = function() {
+            for (var property in answerCategories) {
+                if (answerCategories.hasOwnProperty(property)) {
+                    answerCategories[property] = 0;
+                }
             }
-        }
-    };
-   
-    service.eraseLastAnswer = function()
-    {
-        answerCategories[categoriesStack.pop().toLowerCase()]--;
-    };
-   
-    service.saveTest = function(test) {
-        var tempTests = $window.localStorage.tests === undefined ? [] : JSON.parse($window.localStorage.tests);
-        tempTests.push(test);
-        $window.localStorage.tests = JSON.stringify(tempTests);
-    };
-    
-   
-}]);
+        };
+
+        service.eraseLastAnswer = function() {
+            answerCategories[categoriesStack.pop().toLowerCase()]--;
+        };
+
+        service.saveTest = function(test) {
+            var tempTests = $window.localStorage.tests === undefined ? [] : JSON.parse($window.localStorage.tests);
+            tempTests.push(test);
+            $window.localStorage.tests = JSON.stringify(tempTests);
+        };
+        service.getTests = function() {
+            return JSON.parse($window.localStorage.tests);
+        };
+
+        service.setAnswers = function(answers) {
+            answerCategories = answers;
+        };
+
+    }]);

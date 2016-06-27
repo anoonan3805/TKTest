@@ -1,3 +1,4 @@
+/*global angular*/
 angular.module('starter.controllers')
 .controller('QuestionsCtrl',['$scope', '$stateParams', 'testInfo', 'TKAnswersService', '$state', '$ionicHistory', 'TKResultsButtonService',
 function($scope, $stateParams, testInfo, TKAnswersService, $state, $ionicHistory, TKResultsButtonService) {
@@ -37,15 +38,12 @@ function performRequest()
     var date = new Date();
     answersDict["createDate"] = date.toUTCString();
     TKAnswersService.saveTest(answersDict);
-    $ionicHistory.nextViewOptions({
-         historyRoot: true
-    });
-    $state.go('results');
     TKResultsButtonService.setShouldShowMenuButton(true);
     $ionicHistory.nextViewOptions({
          historyRoot: true
     });
-    $state.go('lobby');
+    $state.go('results');
+
 }
 
 }]);

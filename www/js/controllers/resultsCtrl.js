@@ -1,3 +1,4 @@
+/*global angular*/
 angular.module('starter.controllers')
 .controller('ResultsCtrl', ['$scope', 'TKAnswersService', '$ionicHistory', '$state', 'TKResultsButtonService',
 function($scope, TKAnswersService, $ionicHistory, $state, TKResultsButtonService) {
@@ -21,8 +22,15 @@ $scope.menuButtonTapped = function()
     return (value/12)*100;
 }
 
-$scope.data = [[returnPercentage(answersInfo["Competing"]), returnPercentage(answersInfo["Collaborating"]),
-returnPercentage(answersInfo["Compromising"]), returnPercentage(answersInfo["Avoiding"]), returnPercentage(answersInfo["Accommodating"])]];
+$scope.data = [
+        [
+        returnPercentage(answersInfo["competing"]), 
+        returnPercentage(answersInfo["collaborating"]),
+        returnPercentage(answersInfo["compromising"]), 
+        returnPercentage(answersInfo["avoiding"]), 
+        returnPercentage(answersInfo["accommodating"])
+        ]
+    ];
 
 $scope.options = {
         scaleIntegersOnly: true,
@@ -30,8 +38,8 @@ $scope.options = {
         responsive:true,
         maintainAspectRatio: false,
         scaleOverride: true,
-        scaleSteps: 4,
-        scaleStepWidth: 25,
+        scaleSteps: 5,
+        scaleStepWidth: 20,
         scaleStartValue: 0,
         scaleLabel: "<%=value%>"+"%",
         tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value.toFixed(0) %>"+"%",
