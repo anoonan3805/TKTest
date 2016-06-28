@@ -1,10 +1,52 @@
 <ion-view view-title="Menu">
   <ion-content class="padding">
-    <button class="button button-block button-positive" ng-click=goToTest()>
+   <div class="card">
+  <center><div class="item item-divider">
+    The Thomas-Kilmann Instrment
+  </div>
+  <div class="item item-text-wrap">
+   <center>Because no two individuals have exactly the same expectations and desires, 
+           conflict is a natural part of our interactions with others.<br> 
+           The TKI is a self-scoring assessment that takes about fifteen minutes to complete. It 
+           allows you to discover whether you might be <br>overusing 
+           (high score) or underusing (low score) one or more of these five conflict-handling modes:
+          <div class="list card">
+
+  <a class="item item-icon-left">   <!--href="templates/Competing.html"-->
+    Competing
+  </a>
+
+  <a class="item item-icon-left">
+    Collaborating
+  </a>
+
+  <a class="item item-icon-left">
+    Compromising
+  </a>
+
+  <a class="item item-icon-left">
+    Avoiding
+  </a>
+
+<a class="item item-icon-left">
+    Accommodating
+  </a>
+  
+</div>
+  </div>
+  
+  <button class="button button-block button-royal" ng-click=goToTest()>
       Take test
 </button>
-   <button class="button button-block button-positive" ui-sref="history">
+  
+  <div class="item item-divider" ui-sref="history">
+    My Results
+  </div>
+</div>
+   </center>
+    
+   <!--button class="button button-block button-dark" ui-sref="history">
           My Results
-</button>
+</button> -->
   </ion-content>
 </ion-view>

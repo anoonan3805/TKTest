@@ -46,11 +46,11 @@ $scope.options = {
     };
     
     $scope.colours = [{
-       fillColor: "rgba(151,187,205,0.2)",
-       strokeColor: "rgba(15,187,25,1)",
-       pointColor: "rgba(15,187,25,1)",
-       pointStrokeColor: "#fff",
-       pointHighlightFill: "#fff",
+       fillColor: "rgba(127, 63, 191, 0.3)",
+       strokeColor: "rgba(25, 12, 38, 0.92)",
+       pointColor: "rgba(25, 12, 38, 0.92)",
+       pointStrokeColor: "rgb(54, 10, 96)",
+       pointHighlightFill: "rgb(54, 10, 96)",
        pointHighlightStroke: "rgba(151,187,205,0.8)"
 }];
     
