@@ -32,6 +32,11 @@ $stateProvider
     controller: 'LobbyCtrl',
     templateUrl: 'templates/lobby.html',
   })
+  //.state('competing', {
+    //url: '/competing',
+    //templateUrl: 'templates/competing.html',
+    //controller: 'competingCtrl'
+  //})
   .state('question', {
     url: '/question:questionID',
     templateUrl: 'templates/question.html',

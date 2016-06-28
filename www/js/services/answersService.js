@@ -38,7 +38,7 @@ angular.module('TKTestAnswers',[])
             $window.localStorage.tests = JSON.stringify(tempTests);
         };
         service.getTests = function() {
-            return JSON.parse($window.localStorage.tests);
+            return JSON.parse($window.localStorage.tests) || [];
         };
 
         service.setAnswers = function(answers) {
