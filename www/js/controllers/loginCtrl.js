@@ -10,7 +10,8 @@ angular.module('starter.controllers')
                 .then(function(response) {
                     if (response.status == 200){
                         console.log(response);
-                       // .token =
+                        $window.localStorage.token = response.data.token;
+                        $window.localStorage.userID = response.data.id;
                     $state.go('lobby');
                         
                     }
@@ -19,10 +20,6 @@ angular.module('starter.controllers')
                     // inform the user of any known problems that arose, otherwise give a generic
                     // failed message
                 });
-                
-                // $window.localStorage.token();
-                // $window.localStorage.userID();
-                
 
         };
     }]);

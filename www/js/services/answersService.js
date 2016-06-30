@@ -36,12 +36,13 @@ angular.module('TKTestAnswers',[])
             //var tempTests = $window.localStorage.tests === undefined ? [] : JSON.parse($window.localStorage.tests);
             //tempTests.push(test);
             //$window.localStorage.tests = JSON.stringify(tempTests);
-            test.userID = '5773011d168c143113db0da2'
+            test.userID = $window.localStorage.userID; 
+            //test.filter [where][userID]=response.data.id
             TestResultsRest.save(test);
         };
         service.getTests = function() {
             //return JSON.parse($window.localStorage.tests) || [];
-            return TestResultsRest.get()
+            return TestResultsRest.get($window.localStorage.userID)
             .then(function(res){
                 console.log(res);
                 return res.data;

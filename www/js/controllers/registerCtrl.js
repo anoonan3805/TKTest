@@ -20,9 +20,6 @@ angular.module('starter.controllers')
                     // inform the user of any known problems that arose, otherwise give a generic
                     // failed message
                 });
-                // $window.localStorage.token();
-                // $window.localStorage.userID();
-                
 
         };
     }]);

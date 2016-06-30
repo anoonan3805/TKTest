@@ -13,9 +13,9 @@ angular.module('RESTServices')
     
     }
 
-    TestResultsRest.get = function(){
+    TestResultsRest.get = function(userID){
         return $http ({
-            url: apiUrl,
+            url: 'https://tktest-anoonan3805.c9users.io/api/TestResults?filter[where][userID]=' + userID,
             method: 'GET'
         });
     };
