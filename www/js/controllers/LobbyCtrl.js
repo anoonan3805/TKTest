@@ -11,7 +11,8 @@ angular.module('starter.controllers')
             $scope.goToTest = function() {
                 TKAnswersService.resetAnswers();
                 $state.go('question', {
-                    questionID: 1
+                    questionID: 29
+                    //questionID: 1
                 });
             };
 

@@ -3,3 +3,7 @@
 	background-color: rgba(127, 63, 191, 0.3);
 
 }
+
+.has-errors {
+  border: 1px solid red;
+}

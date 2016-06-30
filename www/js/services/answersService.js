@@ -1,6 +1,6 @@
 /* global angular */
 angular.module('TKTestAnswers',[])
-.service('TKAnswersService',['$window', function ($window) {
+.service('TKAnswersService',['$window', 'TestResultsRest', function ($window, TestResultsRest) {
     var service = this;
     var answerCategories = {
         "competing": 0,
@@ -33,12 +33,24 @@ angular.module('TKTestAnswers',[])
         };
 
         service.saveTest = function(test) {
-            var tempTests = $window.localStorage.tests === undefined ? [] : JSON.parse($window.localStorage.tests);
-            tempTests.push(test);
-            $window.localStorage.tests = JSON.stringify(tempTests);
+            //var tempTests = $window.localStorage.tests === undefined ? [] : JSON.parse($window.localStorage.tests);
+            //tempTests.push(test);
+            //$window.localStorage.tests = JSON.stringify(tempTests);
+            test.userID = '5773011d168c143113db0da2'
+            TestResultsRest.save(test);
         };
         service.getTests = function() {
-            return JSON.parse($window.localStorage.tests) || [];
+            //return JSON.parse($window.localStorage.tests) || [];
+            return TestResultsRest.get()
+            .then(function(res){
+                console.log(res);
+                return res.data;
+            }, function(err){
+                console.log(err);
+                return err;
+                
+            });
+            
         };
 
         service.setAnswers = function(answers) {

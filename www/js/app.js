@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 /*global angular*/
-angular.module('starter', ['ionic', 'TKTestQuestions', 'starter.controllers', 'TKTestAnswers', 'chart.js', 'TKResultsButton'])
+angular.module('starter', ['ionic', 'TKTestQuestions', 'starter.controllers', 'TKTestAnswers', 'chart.js', 'TKResultsButton', 'RESTServices'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -27,16 +27,29 @@ angular.module('starter', ['ionic', 'TKTestQuestions', 'starter.controllers', 'T
 .config(function($stateProvider, $urlRouterProvider) {
 $urlRouterProvider.otherwise('/');
 $stateProvider
-  .state('lobby', {
+  .state('landing',{
     url: '/',
+    templateUrl: 'templates/landing.html'
+  })
+  .state('register',{
+  url: '/register',
+  controller: 'registerCtrl',
+  templateUrl: 'templates/register.html'
+  })
+  .state('login',{
+    url: '/login',
+    templateUrl: 'templates/login.html'
+  })
+  .state('lobby', {
+    url: '/lobby',
     controller: 'LobbyCtrl',
     templateUrl: 'templates/lobby.html',
   })
-  //.state('competing', {
-    //url: '/competing',
-    //templateUrl: 'templates/competing.html',
-    //controller: 'competingCtrl'
-  //})
+  .state('competing', {
+    url: '/competing',
+    templateUrl: 'templates/competing.html',
+    controller: 'competingCtrl'
+  })
   .state('question', {
     url: '/question:questionID',
     templateUrl: 'templates/question.html',
