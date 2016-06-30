@@ -1,17 +1,16 @@
 /*global angular*/
 angular.module('starter.controllers')
-    .controller('registerCtrl', ['$scope', '$state', '$window', 'SSFUsersRest', function($scope, $state, $window, SSFUsersRest) {
+    .controller('loginCtrl', ['$scope', '$state', '$window', 'SSFUsersRest', function($scope, $state, $window, SSFUsersRest) {
+ 
+ $scope.user = {};
+        $scope.signInForm = function(form) {
+            if (form.$invalid) return alert("Please sign in before proceeding.");
 
-        $scope.user = {};
-        $scope.signupForm = function(form) {
-            if (form.$invalid) return alert("Please complete the form before proceeding.");
-
-            SSFUsersRest.post($scope.user)
+            SSFUsersRest.get($scope.user)
                 .then(function(response) {
                     if (response.status == 200){
                         console.log(response);
-                        $window.localStorage.token = response.data.token;
-                        $window.localStorage.userID = response.data.id;
+                       // .token =
                     $state.go('lobby');
                         
                     }
@@ -20,11 +19,10 @@ angular.module('starter.controllers')
                     // inform the user of any known problems that arose, otherwise give a generic
                     // failed message
                 });
+                
                 // $window.localStorage.token();
                 // $window.localStorage.userID();
                 
 
         };
     }]);
-
-  

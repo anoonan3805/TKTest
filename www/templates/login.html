@@ -1,0 +1,11 @@
+<ion-view view-title="Login">
+    <ion-content class="padding">
+        <form name="loginForm" ng-submit="signInForm(loginForm)" novalidate>
+            <label class="item item-input" ng-class="{ 'has-errors' : loginForm.email.$invalid && registerForm.$submitted}">
+                    <input name="email" type="email" placeholder="Email" ng-model="user.email" required></label>
+            <label class="item item-input" ng-class="{ 'has-errors' : loginForm.password.$invalid && registerForm.$submitted}">
+                    <input name="Password" type="text" placeholder="Password" ng-model="user.password" required></label><br>
+                <center><button class="button button-royal" type='submit'>Submit</button></center>
+        </form>
+    </ion-content>
+</ion-view>

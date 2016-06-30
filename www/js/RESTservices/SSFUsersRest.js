@@ -12,4 +12,11 @@
  
      });
    };
+   
+   SSFUsersRest.get = function(){
+    return $http({
+     url: apiUrl,
+     method: "GET"
+    });
+   };
   }]);

@@ -38,6 +38,7 @@ $stateProvider
   })
   .state('login',{
     url: '/login',
+    controller: 'loginCtrl',
     templateUrl: 'templates/login.html'
   })
   .state('lobby', {
