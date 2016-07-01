@@ -19,6 +19,14 @@ angular.module('starter.controllers')
                 }, function(error) {
                     // inform the user of any known problems that arose, otherwise give a generic
                     // failed message
+                    if (error.status == 404){
+                        alert("The server has not found anything matching the Request-URI.");
+                    }else if (error.status == 422){
+                        alert("That email is already taken. Please enter a different email or login if you are already registered.");
+                    }else if (error.status == 500){
+                        alert("The world has ended, or the server just isn’t online. I'd keep my eyes peeled for zombies!");
+                    }
+                    return error;
                 });
 
         };

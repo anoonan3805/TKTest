@@ -25,56 +25,83 @@ angular.module('starter', ['ionic', 'TKTestQuestions', 'starter.controllers', 'T
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
-$urlRouterProvider.otherwise('/');
-$stateProvider
-  .state('landing',{
-    url: '/',
-    templateUrl: 'templates/landing.html'
-  })
-  .state('register',{
-  url: '/register',
-  controller: 'registerCtrl',
-  templateUrl: 'templates/register.html'
-  })
-  .state('login',{
-    url: '/login',
-    controller: 'loginCtrl',
-    templateUrl: 'templates/login.html'
-  })
-  .state('lobby', {
-    url: '/lobby',
-    controller: 'LobbyCtrl',
-    templateUrl: 'templates/lobby.html',
-  })
-  .state('competing', {
-    url: '/competing',
-    templateUrl: 'templates/competing.html',
-    controller: 'competingCtrl'
-  })
-  .state('question', {
-    url: '/question:questionID',
-    templateUrl: 'templates/question.html',
-    controller: 'QuestionsCtrl',
-    resolve: {
-      testInfo: function($stateParams, TKTestQuestionService) {
-        return TKTestQuestionService.getQuestion($stateParams.questionID);
+  $urlRouterProvider.otherwise('/');
+  $stateProvider
+    .state('landing', {
+      url: '/',
+      templateUrl: 'templates/landing.html'
+    })
+    .state('register', {
+      url: '/register',
+      controller: 'registerCtrl',
+      templateUrl: 'templates/register.html'
+    })
+    .state('login', {
+      url: '/login',
+      controller: 'loginCtrl',
+      templateUrl: 'templates/login.html'
+    })
+    .state('lobby', {
+      url: '/lobby',
+      controller: 'LobbyCtrl',
+      templateUrl: 'templates/lobby.html',
+    })
+    .state('competing', {
+      url: '/competing',
+      templateUrl: 'templates/competing.html',
+      controller: 'competingCtrl'
+    })
+    .state('question', {
+      url: '/question:questionID',
+      templateUrl: 'templates/question.html',
+      controller: 'QuestionsCtrl',
+      resolve: {
+        testInfo: function($stateParams, TKTestQuestionService) {
+          return TKTestQuestionService.getQuestion($stateParams.questionID);
+        }
       }
-    }
-  })
-  .state('results', {
-    url: '/results',
-    templateUrl: 'templates/results.html',
-    controller: 'ResultsCtrl',
-    cache: false,
-  })
-  .state('history', {
-    url: '/history',
-    templateUrl: 'templates/history.html',
-    controller: 'HistoryCtrl',
-    resolve: {
-      tests: ['TKAnswersService', function(TKAnswersService) {
-        return TKAnswersService.getTests();
-      }]
-    }
-  });
+    })
+    .state('results', {
+      url: '/results',
+      templateUrl: 'templates/results.html',
+      controller: 'ResultsCtrl',
+      cache: false,
+    })
+    .state('history', {
+      url: '/history',
+      templateUrl: 'templates/history.html',
+      controller: 'HistoryCtrl',
+      resolve: {
+        tests: ['TKAnswersService', '$state', function(TKAnswersService, $state) {
+          return TKAnswersService.getTests()
+            .then(
+              function(response) {
+                if (response.status == 200){}
+                else if (response.status == 503){
+                  alert("Could not contact server.");
+                }
+              },
+
+              function(error) {
+
+                if (error.status == 404) {
+                  alert("The server has not found anything matching the Request-URI.");
+                }
+                else if (error.status == 500) {
+                  alert("The world has ended, or the server just isn’t online. I'd keep my eyes peeled for zombies!");
+                }
+                else if (error.status == 401) {
+                  alert("The request requires user authentication.");
+                }
+                else if (error.status == 503){
+                  alert("Server did not respond.");
+                }
+                $state.go('login');
+
+              });
+
+
+        }]
+      }
+    });
 });

@@ -13,10 +13,11 @@
      });
    };
    
-   SSFUsersRest.get = function(){
+   SSFUsersRest.get = function(user){
     return $http({
-     url: apiUrl,
-     method: "GET"
+     url: apiUrl + '/login',
+     method: "POST",
+     data: user
     });
    };
   }]);
