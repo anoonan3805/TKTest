@@ -72,14 +72,10 @@ angular.module('starter', ['ionic', 'TKTestQuestions', 'starter.controllers', 'T
       templateUrl: 'templates/history.html',
       controller: 'HistoryCtrl',
       resolve: {
-        tests: ['TKAnswersService', '$state', function(TKAnswersService, $state) {
-          return TKAnswersService.getTests()
-            .then(
-              function(response) {
-                if (response.status == 200){}
-                else if (response.status == 503){
-                  alert("Could not contact server.");
-                }
+        tests: ['TKAnswersService', '$window', '$state', function(TKAnswersService, $window, $state) {
+          return TKAnswersService.getTests($window.localStorage.token, $window.localStorage.userID)
+            .then(function(response){
+              return response.data;
               },
 
               function(error) {
@@ -96,6 +92,7 @@ angular.module('starter', ['ionic', 'TKTestQuestions', 'starter.controllers', 'T
                 else if (error.status == 503){
                   alert("Server did not respond.");
                 }
+                
                 $state.go('login');
 
               });

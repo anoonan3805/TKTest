@@ -3,7 +3,7 @@ angular.module('RESTServices')
 .service('TestResultsRest', ['$http', function($http){
     
     var TestResultsRest = this;
-    var apiUrl = 'https://tktest-anoonan3805.c9users.io/api/TestResults/';
+    var apiUrl = 'https://tktest-anoonan3805.c9users.io/api/TestResults';
     TestResultsRest.save = function(test){
         return $http ({
             url: apiUrl,
@@ -13,10 +13,13 @@ angular.module('RESTServices')
     
     }
 
-    TestResultsRest.get = function(userID){
+    TestResultsRest.get = function(token,userID){
         return $http ({
             url: 'https://tktest-anoonan3805.c9users.io/api/TestResults?filter[where][userID]=' + userID,
-            method: 'GET'
+            method: 'GET',
+            headers:{
+                'Authorization':token
+            }
         });
     };
 }]);

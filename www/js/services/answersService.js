@@ -40,17 +40,17 @@ angular.module('TKTestAnswers',[])
             //test.filter [where][userID]=response.data.id
             TestResultsRest.save(test);
         };
-        service.getTests = function() {
+        service.getTests = function(token, userID) {
             //return JSON.parse($window.localStorage.tests) || [];
-            return TestResultsRest.get($window.localStorage.userID)
-            .then(function(res){
-                console.log(res);
-                return res.data;
-            }, function(err){
-                console.log(err);
-                return err;
+            return TestResultsRest.get(token,userID);
+            // .then(function(res){
+            //     console.log(res);
+            //     return res.data;
+            // }, function(err){
+            //     console.log(err);
+            //     return err;
                 
-            });
+            // });
             
         };
 
