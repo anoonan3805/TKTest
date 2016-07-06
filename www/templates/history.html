@@ -3,10 +3,12 @@
         <button class="button" ng-click="menuButtonTapped()" ng-show="shouldShowButton">
         Menu
 </button>
+
     </ion-nav-buttons>
+    
     <ion-content>
         <ion-list>
-          <ion-item collection-repeat="test in tests" ng-click="goToResult(test)" ng-class="$index%2 != 0 ? 'ClassA' : ''">
+          <ion-item collection-repeat="test in tests |orderBy:'-createDate'" ng-click="goToResult(test)" ng-class="$index%2 != 0 ? 'ClassA' : ''">
             Test {{$index+1}}
             <span class="item-note">
               {{test.createDate | date:'dd-MMM-yyyy hh:mm a'}}
