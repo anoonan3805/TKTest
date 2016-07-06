@@ -1,6 +1,6 @@
 /* global angular */
 angular.module('RESTServices')
-.service('TestResultsRest', ['$http', function($http){
+.service('TestResultsRest', ['$http', '$window', function($http, $window){
     
     var TestResultsRest = this;
     var apiUrl = 'https://tktest-anoonan3805.c9users.io/api/TestResults';
@@ -8,7 +8,10 @@ angular.module('RESTServices')
         return $http ({
             url: apiUrl,
             method: 'POST',
-            data: test
+            data: test,
+            headers:{
+                'Authorization': $window.localStorage.token
+            }
         });
     
     }

@@ -1,5 +1,10 @@
 <ion-view view-title="Results">
     <ion-nav-buttons side="left">
+        <button class="button" ui-sref="history" ng-show="shouldShowButton">
+        My Results
+</button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
         <button class="button" ng-click="menuButtonTapped()" ng-show="shouldShowButton">
         Menu
 </button>
