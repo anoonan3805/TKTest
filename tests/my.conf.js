@@ -1,5 +1,5 @@
 // Karma configuration
-// Generated on Thu Jul 07 2016 17:42:21 GMT+0000 (UTC)
+// Generated on Thu Jul 07 2016 20:31:57 GMT+0000 (UTC)
 
 module.exports = function(config) {
   config.set({
@@ -13,8 +13,8 @@ module.exports = function(config) {
     frameworks: ['jasmine'],
 
 
-    // list of files / patterns to load in the browser
-    files: [
+   // list of files / patterns to load in the browser
+files: [
 '../www/lib/ionic/js/ionic.bundle.js',
       '../www/js/*.js',
       '../www/lib/angular-mocks/angular-mocks.js',
@@ -23,6 +23,7 @@ module.exports = function(config) {
 
 // Use the PhantomJS browser instead of Chrome
 browsers: ['PhantomJS'],
+
 
     // list of files to exclude
     exclude: [
