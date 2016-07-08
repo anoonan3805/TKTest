@@ -4,27 +4,24 @@ angular.module('starter.controllers')
 var deploy = new Ionic.Deploy();
   deploy.setChannel("dev");
   
-var deploy = new Ionic.Deploy();
   deploy.check().then(function(hasUpdate) {
-    console.log('Ionic Deploy: Update available: ' + hasUpdate);
+    alert('Ionic Deploy: Update available: ' + JSON.stringify(hasUpdate));
     if(hasUpdate) {
     //Perform update
     }
   }, function(err) {
-    console.error('Ionic Deploy: Unable to check for updates', err);
+    alert('Ionic Deploy: Unable to check for updates' + JSON.stringify(err));
   });
-  
-    }]);
     
-     var deploy = new Ionic.Deploy();
   deploy.update().then(function(res) {
-    //App will automatically reload when updated successfully
-     console.log('Ionic Deploy: Update Success! ', res);
-     alert("Update success!");
+     //App will automatically reload when updated successfully
+     alert('Ionic Deploy: Update Success! ' + JSON.stringify(res));
   }, function(err) {
-    console.log('Ionic Deploy: Update error! ', err);
-    alert("Update error!")
+     alert('Ionic Deploy: Update error! ' + JSON.stringify(err));
   }, function(prog) {
-     console.log('Ionic Deploy: Progress... ', prog);
-     alert("Progress...");
+     //This will be a little obnoxious, so remove after the first time it
+     //works.
+     alert('Ionic Deploy: Progress... ' + JSON.stringify(prog));
   });
+
+    }]);
