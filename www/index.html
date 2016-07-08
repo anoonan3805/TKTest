@@ -15,9 +15,13 @@
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/angular-translate/angular-translate.js"></script>
+    <script src="lib/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+<script src="lib/ionic-platform-web-client/dist/ionic.io.bundle.min.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
-    <script src="cordova.js"></script>
+    <!-- Cordova is bootstrapped by ionic-platform-web-client, uncomment this if you remove ionic-platform-web-client... -->
+<!-- <script src="cordova.js"></script> -->
 
 <!-- Chart.js -->
 <script src="lib/Chart.js/Chart.js"></script>
@@ -25,6 +29,7 @@
 
     <!-- your app's js -->
     <script src="js/controllers/starterControllers.js"></script>
+    <script src="js/controllers/landingCtrl.js"></script>
     <script src="js/controllers/loginCtrl.js"></script>
     <script src="js/controllers/registerCtrl.js"></script>
     <script src="js/controllers/LobbyCtrl.js"></script>

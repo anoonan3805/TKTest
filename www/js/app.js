@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 /*global angular*/
-angular.module('starter', ['ionic', 'TKTestQuestions', 'starter.controllers', 'TKTestAnswers', 'chart.js', 'TKResultsButton', 'RESTServices'])
+angular.module('starter', ['ionic', 'TKTestQuestions', 'starter.controllers', 'TKTestAnswers', 'chart.js', 'TKResultsButton', 'RESTServices', 'ionic.service.core', 'pascalprecht.translate'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -24,11 +24,22 @@ angular.module('starter', ['ionic', 'TKTestQuestions', 'starter.controllers', 'T
   });
 })
 
+.config(function($translateProvider) {
+    $translateProvider
+    //Load languages files from path
+    .useStaticFilesLoader({
+      prefix: 'languages/',
+      suffix: '.json'
+    })
+    .preferredLanguage('en');
+})
+
 .config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/');
   $stateProvider
     .state('landing', {
       url: '/',
+      controller: 'landingCtrl',
       templateUrl: 'templates/landing.html'
     })
     .state('register', {
